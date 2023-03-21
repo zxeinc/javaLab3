@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.lang.Math;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,7 +44,6 @@ public class frame1 extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        addToList = new javax.swing.JButton();
         addToTableFromList = new javax.swing.JButton();
         deleteALLButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -96,13 +96,6 @@ public class frame1 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        addToList.setText("Добав. в список");
-        addToList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addToListActionPerformed(evt);
-            }
-        });
-
         addToTableFromList.setText("Добав. из списка");
         addToTableFromList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,21 +123,9 @@ public class frame1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(addToList)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(addToTableFromList)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleteALLButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -156,8 +137,18 @@ public class frame1 extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 23, Short.MAX_VALUE)))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(addToTableFromList)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteALLButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -176,14 +167,12 @@ public class frame1 extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addToTableFromList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(addButton)
-                        .addComponent(deleteButton)
-                        .addComponent(jButton3)
-                        .addComponent(addToList)
-                        .addComponent(deleteALLButton)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(deleteButton)
+                    .addComponent(jButton3)
+                    .addComponent(deleteALLButton)
+                    .addComponent(addToTableFromList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(215, 215, 215))
@@ -208,6 +197,7 @@ public class frame1 extends javax.swing.JFrame {
             model.addRow(new Object[]{jTextField1.getText(),jTextField2.getText(),jTextField3.getText()});
         } catch (valueException ex) {
             Logger.getLogger(frame1.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "value is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
             //ex.printStackTrace();
             return;
         }
@@ -243,7 +233,8 @@ public class frame1 extends javax.swing.JFrame {
             if(start + step > end){
                 step = end - start;
             }
-            result += ((1 /start  + (1 /(start + step))) * step)/2;
+            //result += ((1 /start  + (1 /(start + step))) * step)/2; // 1/x
+            result += ( (Math.sqrt(start) + Math.sqrt(start + step)) /2)*step; //sqrt(x)
                     start += step;
         }
         
@@ -252,20 +243,6 @@ public class frame1 extends javax.swing.JFrame {
         model.setValueAt(result, jTable2.getSelectedRow(), 3);
         };
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void addToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListActionPerformed
-        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();  
-//        for(int row = 0; row<model.getRowCount(); row++){
-//            list.add(new RecIntegral(Double.valueOf((String)model.getValueAt(row,0)),
-//            Double.valueOf((String)model.getValueAt(row,1)),
-//            Double.valueOf((String)model.getValueAt(row,2)))
-//            );
-//        };
-        System.out.println(model.getRowCount());
-        //RecIntegral spisok = new RecIntegral(np,vp,interval);
-        //list.add(spisok);
-        //System.out.println(spisok.start);
-    }//GEN-LAST:event_addToListActionPerformed
 
     private void addToTableFromListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTableFromListActionPerformed
        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
@@ -320,7 +297,6 @@ public class frame1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addToList;
     private javax.swing.JButton addToTableFromList;
     private javax.swing.JButton deleteALLButton;
     private javax.swing.JButton deleteButton;

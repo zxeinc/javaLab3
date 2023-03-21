@@ -13,7 +13,25 @@ import javax.swing.JOptionPane;
  */
 public class valueException extends Exception{
 
-    public valueException(String str) {
-        JOptionPane.showMessageDialog(null, "value is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+    public valueException() {
     }
+
+    public valueException(String message) {
+        super(message);
+        
+    }
+
+    public valueException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public valueException(Throwable cause) {
+        super(cause);
+    }
+
+    public valueException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+    
+    
 }
