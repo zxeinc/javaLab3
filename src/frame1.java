@@ -197,7 +197,7 @@ public class frame1 extends javax.swing.JFrame {
             model.addRow(new Object[]{jTextField1.getText(),jTextField2.getText(),jTextField3.getText()});
         } catch (valueException ex) {
             Logger.getLogger(frame1.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "value is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+            
             //ex.printStackTrace();
             return;
         }
@@ -233,7 +233,7 @@ public class frame1 extends javax.swing.JFrame {
             if(start + step > end){
                 step = end - start;
             }
-            //result += ((1 /start  + (1 /(start + step))) * step)/2; // 1/x
+            
             result += ( (Math.sqrt(start) + Math.sqrt(start + step)) /2)*step; //sqrt(x)
                     start += step;
         }
